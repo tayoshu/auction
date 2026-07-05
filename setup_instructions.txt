@@ -17,6 +17,28 @@ MariaDB (MySQL), running under XAMPP.
 
 
 ----------------------------------------------------------------
+1a. GETTING THE PROJECT FROM GITHUB
+----------------------------------------------------------------
+
+Repository:  https://github.com/tayoshu/auction
+
+Recommended — clone directly into the XAMPP web root so the folder
+is named exactly "auction":
+
+      cd C:\xampp\htdocs
+      git clone https://github.com/tayoshu/auction.git
+
+Alternative — download as ZIP (GitHub: "Code" -> "Download ZIP"):
+      - Extract it into  C:\xampp\htdocs\
+      - IMPORTANT: GitHub names the extracted folder "auction-main".
+        Rename it to  "auction"  so the address matches this guide
+        (otherwise the app opens at http://localhost/auction-main/).
+
+The app itself uses relative paths, so it will still run under any
+folder name — only the URL changes.
+
+
+----------------------------------------------------------------
 2. STARTING THE SERVERS
 ----------------------------------------------------------------
 
@@ -46,6 +68,13 @@ along with sample data.
 Checking the connection settings (usually no change needed):
    file  admin\db_connect.php
    host = localhost, user = root, password = empty, db = bidding_db
+
+   IMPORTANT:
+   - The database name MUST be exactly  bidding_db  (it is hard-coded).
+   - The default MySQL user is  root  with an EMPTY password (standard
+     XAMPP). If your MySQL root account has a password, open
+     admin\db_connect.php and put it in the 3rd argument, e.g.:
+         $conn = new mysqli('localhost', 'root', 'YOUR_PASSWORD', 'bidding_db');
 
 
 ----------------------------------------------------------------
