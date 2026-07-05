@@ -1,0 +1,139 @@
+================================================================
+  ONLINE BIDDING SYSTEM — SETUP & USAGE INSTRUCTIONS
+================================================================
+
+The application is an online auction system built with PHP +
+MariaDB (MySQL), running under XAMPP.
+
+
+----------------------------------------------------------------
+1. REQUIREMENTS
+----------------------------------------------------------------
+
+- XAMPP installed (with Apache, MySQL/MariaDB and PHP).
+- The project folder must be located in the XAMPP web root:
+      C:\xampp\htdocs\auction
+- A web browser (Chrome, Firefox, etc.).
+
+
+----------------------------------------------------------------
+2. STARTING THE SERVERS
+----------------------------------------------------------------
+
+1) Open the "XAMPP Control Panel".
+2) Click "Start" next to the  Apache  module.
+3) Click "Start" next to the  MySQL  module.
+   (both indicators should turn green)
+
+
+----------------------------------------------------------------
+3. DATABASE SETUP (one-time)
+----------------------------------------------------------------
+
+1) Open in your browser:  http://localhost/phpmyadmin
+2) On the left, click "New" (create database).
+3) Enter the database name:  bidding_db  and click "Create".
+4) Select the newly created bidding_db in the list on the left.
+5) Go to the "Import" tab.
+6) Click "Choose File" and select:
+      C:\xampp\htdocs\auction\database\bidding_db.sql
+7) Scroll down and click "Go" (import).
+
+After this, the database will contain the tables:
+   users, categories, products, bids, system_settings
+along with sample data.
+
+Checking the connection settings (usually no change needed):
+   file  admin\db_connect.php
+   host = localhost, user = root, password = empty, db = bidding_db
+
+
+----------------------------------------------------------------
+4. OPENING THE APPLICATION
+----------------------------------------------------------------
+
+Client side (for buyers):
+      http://localhost/auction/
+
+Admin panel (for management):
+      http://localhost/auction/admin/
+
+
+----------------------------------------------------------------
+5. TEST ACCOUNTS
+----------------------------------------------------------------
+
+Administrator:
+      Username: admin
+      Password: admin123
+
+Buyer (subscriber):
+      Username: jsmith
+      (or register a new one via the Login -> Sign up button
+       on the client side)
+
+
+----------------------------------------------------------------
+6. HOW TO USE — ADMINISTRATOR
+----------------------------------------------------------------
+
+Log in at  http://localhost/auction/admin/  as admin / admin123.
+
+The menu on the left contains:
+
+  - Home            — the panel's start page.
+  - Categories      — product categories (create / edit / delete).
+  - Products        — the list of lots. The "New Entry" button adds a
+                      new product: name, category, description, prices,
+                      bidding end date/time and an image.
+  - Bids            — all buyer bids with their status
+                      (bidding in progress / winner / loser).
+  - Users           — user management (administrator only).
+  - System Settings — site name, e-mail, contacts, cover image,
+                      "About" text (administrator only).
+
+Adding a product:
+  Products -> New Entry -> fill in the fields -> select an image ->
+  click Save. The product appears on the client side until the
+  specified bidding end time has passed.
+
+
+----------------------------------------------------------------
+7. HOW TO USE — BUYER
+----------------------------------------------------------------
+
+Open  http://localhost/auction/
+
+  1) On the left, choose a category or "All" to see the active lots.
+  2) Click "View" on a product card to open its description.
+  3) To place a bid you must be logged in (the "Login" button at the
+     top right; a new user registers via Sign up).
+  4) In the product card click "Bid", enter an amount (it must be
+     GREATER than the current highest bid) and click "Submit".
+  5) The current highest bid updates automatically in real time.
+
+Notes:
+  - You cannot outbid your own bid (the system prevents it).
+  - A lot disappears from the list once its bidding end date/time is
+    reached.
+
+
+----------------------------------------------------------------
+8. COMMON ISSUES
+----------------------------------------------------------------
+
+- The page does not open / "This site can't be reached":
+      make sure Apache is running in XAMPP.
+
+- Database connection error ("Connection failed"):
+      make sure MySQL is running and the bidding_db database has been
+      imported.
+
+- Port 80 is in use (Apache won't start):
+      it is usually blocked by Skype or another web server; close them
+      or change the Apache port in the XAMPP settings.
+
+- Product images are not displayed:
+      make sure the files are located in  admin\assets\uploads\
+
+================================================================

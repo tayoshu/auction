@@ -1,0 +1,29 @@
+# === OS / system ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# === Editors / IDE ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# === Logs ===
+*.log
+
+# === User uploads ===
+# The current files in admin/assets/uploads/ are demo content (product
+# images, cover, logo) and are intentionally kept in the repository.
+# If you later want to stop tracking NEW user uploads, uncomment the
+# lines below and keep the demo files via "!":
+#
+# admin/assets/uploads/*
+# !admin/assets/uploads/4.jpg
+# !admin/assets/uploads/5.jpg
+# !admin/assets/uploads/6.jpg
+# !admin/assets/uploads/7.jpg
+# !admin/assets/uploads/1737331920_Fig-6.logo.jpg
